@@ -1,0 +1,34 @@
+var prop = PropertiesService.getScriptProperties();
+var sheetName = prop.getProperty('SHEET_NAME');
+
+
+function doPost(e) {
+
+
+
+
+    // シート取得
+    var ss = SpreadsheetApp.openById(SpreadsheetApp.getActiveSpreadsheet().getId());
+    var sheet = ss.getSheetByName(sheetName);
+
+    var postjsonString = e.postData.getDataAsString();
+    var postdata = JSON.parse(postjsonString);
+
+    var sound = null;
+    var date = null;
+    var date_time = null;
+
+    // データ入力
+    sound = postdata.sound;
+
+    date = new Date();
+    date_time =  Utilities.formatDate(date, 'JST', 'yyyy-MM-dd HH:mm:ss')
+    sheet.appendRow([date_time,sound]);
+
+    var output = ContentService.createTextOutput();
+    output.setMimeType(ContentService.MimeType.JSON);
+    output.setContent(JSON.stringify({ message: "success!" }));
+
+    return output;
+
+}
