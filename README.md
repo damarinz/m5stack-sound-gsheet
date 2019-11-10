@@ -23,3 +23,10 @@
 WiFiの情報を書く部分があるので、記入します。11aにはM5Stackが対応してないので、2.4GHz帯の11nなどを選んでください
 
 8. 書き込みが成功すれば、M5Stack Fire Analog 34pinの数値が10秒おきにgoogle sheetに書かれます。
+
+
+### 次のステップ
+
+M5Stack Fireのマイクロフォンの信号は、サンプリングやFFTなどの処理をする必要があります。
+
+https://ambidata.io/samples/m5stack/sound/

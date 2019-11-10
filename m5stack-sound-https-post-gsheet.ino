@@ -12,6 +12,7 @@ const char* password = "xxxxxxxxx";    // your network password
 //setup start
 void setup() {
   M5.begin();
+  dacWrite(25, 0); // stop speaker for decrease noize
   Wire.begin();
   //Initialize serial and wait for port to open:
   Serial.begin(115200);
